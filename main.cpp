@@ -13,11 +13,12 @@ static Deck deck;
 static vector<Card> player1;
 static vector<Card> player2;
 static int warCard = 4;
+void reset();
 
 /** Functions **/
 // If war occurs
 static void goToWar() {
-    while ((player1.size() < warCard || player2.size() < warCard) && warCard > 1) {
+    while ((player1.size() < (size_t) warCard || player2.size() < (size_t) warCard) && warCard > 1) {
         warCard--;
     }
 
@@ -54,7 +55,7 @@ static void goToWar() {
 // Resets game
 void reset() {
     deck.reset();
-    int warCard = 4;
+    warCard = 4;
     player1.clear();
     player2.clear();
 }
