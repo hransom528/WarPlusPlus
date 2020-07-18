@@ -5,6 +5,7 @@
 #include <random>
 #include <time.h>
 #include <sstream>
+#include <assert.h>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ Deck::Deck() {
 }
 
 void Deck::reset() {
+    this->cards.clear();
     this->addSuit("spades");
     this->addSuit("hearts");
     this->addSuit("diamonds");
@@ -35,6 +37,7 @@ int Deck::getSize() {
 
 Card Deck::deal() {
     Card returnCard;
+    assert(this->isEmpty() != true);
     if (!this->isEmpty()) {
         returnCard = this->cards.back();
         cards.pop_back();
@@ -50,13 +53,13 @@ void Deck::shuffle() {
     if (cards.size() < MAX_SIZE) {
         return;
     }
-    unsigned seed = time(0);
+    unsigned int seed = time(nullptr);
     std::shuffle(begin(cards), end(cards), default_random_engine(seed));
 }
 
 string Deck::toString() {
     stringstream ss;
-    for (int i = 0; i < cards.size(); i++) {
+    for (int i = 0; i < (int)cards.size(); i++) {
         ss << cards.at(i).toString() << "\n";
     }
     return ss.str();
