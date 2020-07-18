@@ -2,5 +2,7 @@
 *.depend
 *.layout
 *.save
+*.o
 bin/Debug/
-obj/Debug/
+obj/
+obj/Release/*
